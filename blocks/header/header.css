@@ -1,0 +1,9 @@
+.header {
+  margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 41px;
+  width: 880px;
+  max-width: 880px;
+  border-bottom: 1px solid #545454;
+  grid-area: header;
+}

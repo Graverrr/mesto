@@ -1,0 +1,15 @@
+.page {
+  background-color: #000000;
+  display: grid;
+  min-width: 320px;
+  color: white;
+  font-family: "Inter", Arial, sans-serif;
+  font-weight: 400;
+  grid-template-columns: minmax(320px, 1280px);
+  grid-template-rows: repeat(3, min-content);
+  justify-content: start;
+  grid-template-areas:
+    "header"
+    "content"
+    "footer";
+}

@@ -1,0 +1,7 @@
+.heart {
+  width: 22px;
+  height: 19px;
+}
+.heart:hover {
+  opacity: 50%;
+}

@@ -6,9 +6,9 @@
   color: white;
   font-family: "Inter", Arial, sans-serif;
   font-weight: 400;
-  grid-template-columns: minmax(320px, 1280px);
+  grid-template-columns: minmax(320px, 880px);
   grid-template-rows: repeat(3, min-content);
-  justify-content: start;
+  justify-content: center;
   grid-template-areas:
     "header"
     "content"

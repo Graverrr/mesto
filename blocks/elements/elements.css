@@ -1,4 +1,4 @@
-.photo-grid {
+.elements {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
   grid-template-rows: repeat(2, 361px);
@@ -19,7 +19,7 @@
 }
 
 @media screen and (max-width: 768px) {
-  .photo-grid {
+  .elements {
     grid-template-columns: repeat(auto-fit, 352px);
     grid-template-rows: repeat(6, 264px);
     gap: 16px;
@@ -28,7 +28,7 @@
 }
 
 @media screen and (max-width: 470px) {
-  .photo-grid {
+  .elements {
     grid-template-columns: repeat(auto-fit, 288px);
     grid-template-rows: repeat(12, 216px);
     gap: 12px;

@@ -4,5 +4,13 @@
   padding: 0;
   border: 0;
   background-color: white;
-  position: absolute;
+  background-image: url(../../../images/heart.svg);
+
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.button__like:hover {
+  opacity: 50%;
 }

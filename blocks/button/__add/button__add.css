@@ -3,11 +3,11 @@
   margin-top: 35px;
   max-width: 150px;
   height: 50px;
+  color: black;
   max-height: 50px;
   background: black;
-  grid-column: 5/6;
-  justify-self: end;
-  border: 1px solid white;
+  align-self: center;
+  margin-left: auto;
 }
 
 .button__add:hover {

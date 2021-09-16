@@ -2,12 +2,12 @@
 
 ### Обзор
 
-* Figma
-* Картинки
+- Figma
+- Картинки
 
 **Figma**
 
-* [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+- [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
 
 **Картинки**
 
@@ -15,3 +15,16 @@
 Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
 
 Удачи!
+<img class="button\_\_like_active"src="./images/like.svg">
+
+function likeToggle(){
+like.classList.toggle('button\_\_like_active')
+}
+
+like.addEventListener('click', likeToggle);
+
+function clickLike(event){
+if (event.target === event.currentTarget) {
+likeToggle()
+}
+}

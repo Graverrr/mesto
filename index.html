@@ -71,16 +71,15 @@
         </footer>
     </div>
     <section class="popup">
-      <div class="popup__container">
-        <img src="./images/close-btn.svg" alt="крестик" class="popup__close">
-
+      <form name="form" class="popup__container">
+        <img src="./images/close-btn.svg" alt="крестик" class="popup__close" >
         <div class="popup__content">
           <h2 class="popup__title">Редактировать профиль</h2>
-          <input class="popup__info popup__name">
-          <input class="popup__info popup__job">
-          <button class="button__save">Сохранить</button>
+          <input class="popup__info popup__name" type="text">
+          <input class="popup__info popup__job" type="text">
+          <button class="button__save" type="submit">Сохранить</button>
         </div>
-      </div>
+      </form>
     </section>
     <script src="./scripts/index.js"></script>
 </body>

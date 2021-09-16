@@ -1,5 +1,5 @@
 .page {
-  margin: auto;
+  margin: 0 auto;
   background-color: #000000;
   display: grid;
   min-width: 320px;

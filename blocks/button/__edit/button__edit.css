@@ -1,4 +1,14 @@
-.button__edit:hover{
+.button__edit {
+  background: black;
+  margin: 0;
+  margin-left: 18px;
+  width: 24px;
+  height: 24px;
+  margin-top: 37px;
+  border: 1px solid white;
+  grid-area: edit-button;
+}
+
+.button__edit:hover {
   opacity: 50%;
-  transition: ease-in;
 }

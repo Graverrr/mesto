@@ -1,8 +1,8 @@
 const popup = document.querySelector('.popup');
-const popupOpenBtn = document.querySelector('.profile__edit-button');
+const popupOpenBtn = document.querySelector('.button__edit');
 const popupCloseBtn = popup.querySelector('.popup__close');
 const like = document.querySelectorAll('.button__like');
-let form = popup.querySelector('.popup__content');
+let form = popup.querySelector('.popup__container');
 let nameInput = popup.querySelector('.popup__name');
 let jobInput = popup.querySelector('.popup__job');
 let profileName = document.querySelector('.profile__name');
@@ -16,6 +16,8 @@ for(let i = 0; i<like.length; i++) {
 }
 function popupToggle() {
   popup.classList.toggle('popup__opened')
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 };
 
 function clickOverlay(event){
@@ -26,13 +28,12 @@ function clickOverlay(event){
 function formSubmitHandler (evt) {
   evt.preventDefault();
   
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileJob.textContent;
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  popupToggle();
+  popupToggle()
 }
 form.addEventListener('submit', formSubmitHandler);
+
 popup.addEventListener('click', clickOverlay)
 popupOpenBtn.addEventListener('click', popupToggle);
 popupCloseBtn.addEventListener('click', popupToggle);

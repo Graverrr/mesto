@@ -1,0 +1,10 @@
+.popup__info{
+padding: 0;
+font-size: 14px;
+line-height: 17px;
+border: 0;
+border-bottom: 1px solid #000000;
+opacity: .2;
+width: 358px;
+max-width: 358px;
+}

@@ -1,0 +1,4 @@
+.button__edit:hover{
+  opacity: 50%;
+  transition: ease-in;
+}

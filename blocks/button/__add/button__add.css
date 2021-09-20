@@ -1,7 +1,6 @@
 .button__add {
   width: 150px;
   margin-top: 35px;
-  width: 150px;
   height: 50px;
   color: black;
   max-height: 50px;
@@ -18,7 +17,7 @@
   opacity: 50%;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 1024px) {
   .button__add{
     margin-right: 30px;
   }

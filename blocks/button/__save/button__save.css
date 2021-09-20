@@ -13,3 +13,12 @@
 .button__save:hover{
   opacity: 50%;
 }
+
+
+
+@media screen and (max-width:540px) {
+  .button__save {
+    width: 238px;
+    height: 46px;
+  }
+}

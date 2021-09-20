@@ -23,3 +23,9 @@
     margin-right: 30px;
   }
 }
+
+@media screen and (max-width: 740px) {
+  .elements {
+    margin: 0 19px;
+  }
+}

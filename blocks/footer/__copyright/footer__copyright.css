@@ -10,3 +10,9 @@
     margin-right: 30px;
   }
 }
+@media screen and (max-width: 750px) {
+  .footer__copyright {
+    margin: 48px 19px 36px
+  }
+}
+

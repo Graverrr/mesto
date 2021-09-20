@@ -2,13 +2,27 @@
   background: black;
   margin: 0;
   margin-left: 18px;
+  margin-bottom: 9px;
   width: 24px;
   height: 24px;
-  margin-top: 37px;
+  align-self: flex-end;
+  align-content: center;
   border: 1px solid white;
-  grid-area: edit-button;
+  background-image: url(../../../images/edit-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  grid-column: 2/3;
+  cursor: pointer;
+  
 }
 
 .button__edit:hover {
   opacity: 50%;
+}
+
+@media screen and (max-width: 700px) {
+  .button__edit{
+    width: 18px;
+    height: 18px;
+  }
 }

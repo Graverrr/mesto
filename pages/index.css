@@ -26,6 +26,6 @@
 @import url(../blocks/popup/__info/popup__info.css);
 @import url(../blocks/popup/__info/_type/popup___info_type_name.css);
 @import url(../blocks/popup/__info/_type/popup__info_type_job.css);
-@import url(../blocks/popup/__opened/popup__opened.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__btn-save/popup__btn-save.css);

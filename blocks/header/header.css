@@ -18,3 +18,10 @@
     margin: 0 19px;
   }
 }
+@media screen and (max-width: 350px) {
+  .header {
+    margin: 0;
+    padding-top: 28px;
+    padding-bottom: 32px;
+  }
+}

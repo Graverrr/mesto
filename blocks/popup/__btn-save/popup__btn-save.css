@@ -9,6 +9,7 @@
   color: white;
   font-size: 18px;
   line-height: 22px;
+  cursor: pointer;
 }
 .popup__btn-save:hover{
   opacity: 50%;

@@ -5,9 +5,10 @@
   width: 32px;
   height: 32px;
   cursor: pointer;
-  background-color: black;
   border: 0;
   background-image: url(../../../images/close-btn.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
 }
 
 .popup__close:hover{

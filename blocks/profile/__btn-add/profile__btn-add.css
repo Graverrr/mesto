@@ -11,6 +11,9 @@
   box-sizing: border-box;
   cursor: pointer;
   border-radius: 2px;
+  background-image: url(../../../images/add-button.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .profile__btn-add:hover {

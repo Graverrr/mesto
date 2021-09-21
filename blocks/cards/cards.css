@@ -1,7 +1,7 @@
-.elements {
+.cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, 282px);
-  grid-template-rows: repeat(2, 361px);
+  grid-template-rows: repeat(2);
   column-gap: 17px;
   row-gap: 20px;
   justify-content: center;
@@ -9,23 +9,16 @@
   max-width: 100%;
 }
 
-@media screen and (max-width: 1024px) {
-  .elements {
-    grid-template-columns: repeat(auto-fit, 282px);
-    grid-template-rows: repeat(2, 361px);
-  }
-}
 @media screen and (max-width: 930px) {
-  .elements {
-    grid-template-columns: repeat(auto-fit, 282px);
-    grid-template-rows: repeat(3, 361px);
+  .cards {
+    grid-template-rows: repeat(3);
     margin-left: 30px;
     margin-right: 30px;
   }
 }
 
 @media screen and (max-width: 740px) {
-  .elements {
+  .cards {
     margin: 0 19px;
   }
 }

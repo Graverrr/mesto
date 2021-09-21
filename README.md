@@ -1,30 +1,12 @@
-# Проект: Место
+# Проект: Mesto(Проектная работа №4)
 
-### Обзор
+## Описание работы
+Делаем свой Instagram
 
-- Figma
-- Картинки
+**GitHub Pages**
 
-**Figma**
+* [Ссылка на GitHub Pages](https://graverrr.github.io/mesto/index.html)
 
-- [Ссылка на макет в Figma](https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+**Используемые технологии**
 
-**Картинки**
-
-Доставать картинки предстоит из Фигмы. Это расхожая практика, поэтому полезно потренироваться.
-Не забудьте [оптимизировать картинки](https://tinypng.com/), чтобы ваш сайт загружался быстрее.
-
-Удачи!
-<img class="button\_\_like_active"src="./images/like.svg">
-
-function likeToggle(){
-like.classList.toggle('button\_\_like_active')
-}
-
-like.addEventListener('click', likeToggle);
-
-function clickLike(event){
-if (event.target === event.currentTarget) {
-likeToggle()
-}
-}
+js, flex верстка, построение сетки страницы при помощи grid, 

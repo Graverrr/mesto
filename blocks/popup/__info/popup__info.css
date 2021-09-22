@@ -8,6 +8,11 @@
   color: black;
   width: 358px;
   max-width: 358px;
+  margin-bottom: 30px;
+}
+
+.popup__info:last-of-type{
+  margin-bottom: 45px;
 }
 
 @media screen and (max-width:540px) {

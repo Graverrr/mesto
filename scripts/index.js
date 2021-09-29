@@ -6,6 +6,53 @@ let nameInput = popup.querySelector('.popup__info_type_name');
 let jobInput = popup.querySelector('.popup__info_type_job');
 let profileName = document.querySelector('.profile__name');
 let profileJob = document.querySelector('.profile__description');
+const cardTemplate = document.querySelector('.cards-template');
+const cardList = document.querySelector('.cards__list');
+const cards = document.querySelector(".cards");
+const initialCards = [
+  {
+    name: 'Архыз',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+  },
+  {
+    name: 'Челябинская область',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+  },
+  {
+    name: 'Иваново',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+  },
+  {
+    name: 'Камчатка',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+  },
+  {
+    name: 'Холмогорский район',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+  },
+  {
+    name: 'Байкал',
+    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+  }
+]; 
+
+function renderCard (title, src, alt) {
+  const card = cardTemplate.content.cloneNode(true);;
+  card.querySelector('.card__title').textContent = title;
+  card.querySelector('.card__image').src = src;
+  card.querySelector('.card__image').alt = title;
+  cardList.prepend(card)
+}
+
+
+function cardCreate (){
+  let card = cardTemplate.content.cloneNode(true);
+  for (i=0; i< initialCards.length; i++){
+    renderCard(initialCards[i].name, initialCards[i].link)
+  }
+}
+cardCreate();
+
 
 function openPopup() {
   nameInput.value = profileName.textContent;
@@ -16,11 +63,13 @@ function closePopup() {
   popup.classList.remove('popup_opened');
 };
 
+// функция закрытия попапа кликом по оверлею
 function clickOverlay(event){
   if (event.target === event.currentTarget) {
-    closePopup();
+    popupToggle()
   }
 }
+// отправка данных в форму инпута
 function formSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -28,7 +77,8 @@ function formSubmitHandler (evt) {
   closePopup();
 }
 
+cardCreate()
 form.addEventListener('submit', formSubmitHandler);
-popup.addEventListener('click', clickOverlay)
+popup.addEventListener('click', clickOverlay);
 popupOpenBtn.addEventListener('click', openPopup);
 popupCloseBtn.addEventListener('click', closePopup);

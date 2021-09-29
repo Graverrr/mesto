@@ -22,48 +22,7 @@
                 <button class="profile__btn-add" type="button"></button>
             </section> 
             <section class="cards">
-                <article class="card">
-                    <img class="card__image" src="./images/karachaevsk.jpg" alt="карачаевск">
-                    <div class="card__info">
-                      <h2 class="card__title">Карачаевск</h2>
-                      <button class="card__btn-like" type="button"></button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img class="card__image" src="./images/elbrus.png" alt="эльбрус">
-                    <div class="card__info">
-                        <h2 class="card__title">Гора Эльбрус</h2>
-                        <button class="card__btn-like" type="button"></button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img class="card__image" src="./images/dombay.png" alt="домбай">
-                    <div class="card__info">
-                        <h2 class="card__title">Домбай</h2>
-                        <button class="card__btn-like" type="button"></button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img class="card__image" src="./images/elbrus.png" alt="эльбрус">
-                    <div class="card__info">
-                        <h2 class="card__title">Гора Эльбрус</h2>
-                        <button class="card__btn-like" type="button"></button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img class="card__image" src="./images/dombay.png" alt="домбай">
-                    <div class="card__info">
-                        <h2 class="card__title">Домбай</h2>
-                        <button class="card__btn-like" type="button"></button>
-                    </div>
-                </article>
-                <article class="card">
-                    <img class="card__image" src="./images/karachaevsk.jpg" alt="карачаевск">
-                    <div class="card__info">
-                      <h2 class="card__title">Карачаево-черкесия</h2>
-                      <button class="card__btn-like" type="button"></button>
-                    </div>
-                </article>
+                <ul class="cards__list"></ul>
             </section>
         </main>
         <footer class="footer">
@@ -81,6 +40,16 @@
         </div>
       </form>
     </div>
+    <template class="cards-template">
+        <li class="card">
+            <button class="card__btn-delete"></button>
+            <img class="card__image">
+            <div class="card__info">
+              <h2 class="card__title">Карачаево-черкесия</h2>
+              <button class="card__btn-like" type="button"></button>
+            </div>
+        </li>
+    </template>
     <script src="./scripts/index.js"></script>
 </body>
 </html>

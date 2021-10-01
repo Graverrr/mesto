@@ -1,14 +1,18 @@
 const popup = document.querySelector('.popup');
+const profile = document.querySelector('.profile')
+const popupEdit = document.querySelector('.popup__container_type_edit');
 const popupOpenBtn = document.querySelector('.profile__btn-edit');
 const popupCloseBtn = popup.querySelector('.popup__close');
-let form = popup.querySelector('.popup__container');
+let form = popupEdit.querySelector('.popup__container');
+const popupCards = popup.querySelector('.popup__container_type_create')
 let nameInput = popup.querySelector('.popup__info_type_name');
 let jobInput = popup.querySelector('.popup__info_type_job');
-let profileName = document.querySelector('.profile__name');
-let profileJob = document.querySelector('.profile__description');
+let profileName = profile.querySelector('.profile__name');
+let profileJob = profile.querySelector('.profile__description');
 const cardTemplate = document.querySelector('.cards-template');
 const cardList = document.querySelector('.cards__list');
-const cards = document.querySelector(".cards");
+const cardsForm = document.querySelector('.cards__form');
+const popupAddCardOpenBtn = document.querySelector('.profile__btn-add');
 const initialCards = [
   {
     name: 'Архыз',
@@ -45,19 +49,25 @@ function renderCard (title, src, alt) {
 }
 
 
+
 function cardCreate (){
   let card = cardTemplate.content.cloneNode(true);
   for (i=0; i< initialCards.length; i++){
     renderCard(initialCards[i].name, initialCards[i].link)
   }
-}
+};
 cardCreate();
+function popupCardsToggle() {
+  popupCards.classList.toggle("popup_opened");
+}
 
 
-function openPopup() {
+popupAddCardOpenBtn.addEventListener("click", popupCardsToggle);
+
+function popupEditToggle() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  popup.classList.add('popup_opened');
+  popupEdit.classList.toggle('popup_opened');
 };
 function closePopup() {
   popup.classList.remove('popup_opened');
@@ -66,19 +76,18 @@ function closePopup() {
 // функция закрытия попапа кликом по оверлею
 function clickOverlay(event){
   if (event.target === event.currentTarget) {
-    popupToggle()
+    popupEditToggle()
   }
-}
+};
 // отправка данных в форму инпута
 function formSubmitHandler (evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileJob.textContent = jobInput.value;
-  closePopup();
-}
+  popupEditToggle();
+};
 
-cardCreate()
-form.addEventListener('submit', formSubmitHandler);
+popupEdit.addEventListener('submit', formSubmitHandler);
 popup.addEventListener('click', clickOverlay);
-popupOpenBtn.addEventListener('click', openPopup);
-popupCloseBtn.addEventListener('click', closePopup);
+popupOpenBtn.addEventListener('click', popupEditToggle);
+popupCloseBtn.addEventListener('click', popupEditToggle);

@@ -13,6 +13,8 @@
     "header"
     "content"
     "footer";
+  box-sizing: border-box;
+  min-height: 100vh;
 }
 
 

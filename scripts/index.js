@@ -1,10 +1,10 @@
 const popup = document.querySelector('.popup');
 const profile = document.querySelector('.profile')
 const popupEdit = document.querySelector('.popup__container_type_edit');
+const popupCards = document.querySelector('.popup__container_type_create');
 const popupOpenBtn = document.querySelector('.profile__btn-edit');
 const popupCloseBtn = popup.querySelector('.popup__close');
 let form = popupEdit.querySelector('.popup__container');
-const popupCards = popup.querySelector('.popup__container_type_create')
 let nameInput = popup.querySelector('.popup__info_type_name');
 let jobInput = popup.querySelector('.popup__info_type_job');
 let profileName = profile.querySelector('.profile__name');
@@ -12,7 +12,9 @@ let profileJob = profile.querySelector('.profile__description');
 const cardTemplate = document.querySelector('.cards-template');
 const cardList = document.querySelector('.cards__list');
 const cardsForm = document.querySelector('.cards__form');
-const popupAddCardOpenBtn = document.querySelector('.profile__btn-add');
+const cardsImage = document.querySelector('.cards__image');
+const popupAddCardBtn = document.querySelector('.profile__btn-add');
+const popupCloseCardBtn = document.querySelector('.popup__close_cards');
 const initialCards = [
   {
     name: 'Архыз',
@@ -39,45 +41,52 @@ const initialCards = [
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
 ]; 
-
-function renderCard (title, src, alt) {
+function createCard (item) {
   const card = cardTemplate.content.cloneNode(true);;
-  card.querySelector('.card__title').textContent = title;
-  card.querySelector('.card__image').src = src;
-  card.querySelector('.card__image').alt = title;
-  cardList.prepend(card)
+  card.querySelector('.card__title').textContent = item.name;
+  card.querySelector('.card__image').src = item.link;
+  card.querySelector('.card__image').alt = item.name;
+  //card.querySelector('.card__btn-delete').addEventListener('click', deleteCard);
+  card.querySelector('.card__btn-like').addEventListener('click', likeToggle);
+  //card.querySelector('.card__image').addEventListener('click', popup);
+  return card
+}
+function renderCards(initialCards) {
+  const card = initialCards.map(createCard);
+  cardList.append(...card);
+}
+renderCards(initialCards);
+function likeToggle (evt) {  
+  evt.target.classList.toggle('card__btn-like_active');
 }
 
 
 
-function cardCreate (){
-  let card = cardTemplate.content.cloneNode(true);
-  for (i=0; i< initialCards.length; i++){
-    renderCard(initialCards[i].name, initialCards[i].link)
-  }
-};
-cardCreate();
-function popupCardsToggle() {
-  popupCards.classList.toggle("popup_opened");
+function addNewCard(evt) {
+  evt.preventDefault();
+  const nameInput = evt.currentTarget.querySelector ('.popup__info_type_name').value; 
+  const linkInput = evt.currentTarget.querySelector ('.popup__info_type_link').value;
+  const newInitialCards = createCard ({name: nameInput,link: linkInput});
+  cardList.prepend(newInitialCards);
+  evt.currentTarget.reset();
+  popupToggle(popupCards);
 }
 
 
-popupAddCardOpenBtn.addEventListener("click", popupCardsToggle);
 
+function popupToggle(popup){
+  popup.classList.toggle('popup_opened')
+}
 function popupEditToggle() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  popupEdit.classList.toggle('popup_opened');
+  popupToggle(popupEdit)
 };
-function closePopup() {
-  popup.classList.remove('popup_opened');
-};
-
-// функция закрытия попапа кликом по оверлею
-function clickOverlay(event){
-  if (event.target === event.currentTarget) {
-    popupEditToggle()
-  }
+function popupCardsToggle() {
+  popupToggle(popupCards)
+  
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileJob.textContent;
 };
 // отправка данных в форму инпута
 function formSubmitHandler (evt) {
@@ -87,7 +96,11 @@ function formSubmitHandler (evt) {
   popupEditToggle();
 };
 
-popupEdit.addEventListener('submit', formSubmitHandler);
-popup.addEventListener('click', clickOverlay);
+
+
 popupOpenBtn.addEventListener('click', popupEditToggle);
 popupCloseBtn.addEventListener('click', popupEditToggle);
+popupEdit.addEventListener('submit', formSubmitHandler);
+popupAddCardBtn.addEventListener('click', popupCardsToggle);
+popupCards.addEventListener('submit',addNewCard)
+popupCloseCardBtn.addEventListener('click', popupCardsToggle);

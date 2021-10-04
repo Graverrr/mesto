@@ -1,0 +1,26 @@
+.popup__close_cards{
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  border: 0;
+  background-image: url(../../../../images/close-btn.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 32px;
+}
+
+.popup__close:hover{
+  opacity: 50%;
+}
+
+
+@media screen and (max-width:540px){
+  .popup__close{
+    background-size: 20px;
+    right: 0;
+  }
+}

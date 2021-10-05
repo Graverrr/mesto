@@ -12,5 +12,7 @@
 }
 
 .card__btn-like:hover {
-  opacity: 50%;
+  cursor: pointer;
+  transition: .5s linear;
+  opacity: .5;
 }

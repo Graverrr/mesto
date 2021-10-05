@@ -7,6 +7,7 @@
   grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
   column-gap: 17px;
   row-gap: 20px;
+  min-height: 760px;
 }
   
 @media (min-width: 550px) and (max-width: 919px) {

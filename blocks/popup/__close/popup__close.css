@@ -1,7 +1,4 @@
 .popup__close{
-  position: absolute;
-  top: -40px;
-  right: -40px;
   width: 32px;
   height: 32px;
   cursor: pointer;
@@ -11,6 +8,9 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: 32px;
+  position: absolute;
+  top: -40px;
+  right: -40px;
 }
 
 .popup__close:hover{

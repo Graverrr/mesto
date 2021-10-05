@@ -108,10 +108,9 @@ popupCards.addEventListener('submit',addNewCard);
 function popupImageOpen(evt) {
   const link = evt.target.currentSrc;
   const title = evt.currentTarget.nextElementSibling.innerText;
-  const alt = evt.currentTarget.nextElementSibling.innerText;
   fullSizeImage.src = link; 
+  
   popupImageTitle.innerText = title;
-  popupImageTitle.innerText = alt;
   popupToggle(popupImage);  
 }
 

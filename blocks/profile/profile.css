@@ -1,10 +1,16 @@
 .profile {
   display: flex;
-  margin: 0 30px;
+  margin: 0;
   align-items: flex-start;
   margin-top: 40px;
 }
 
+
+@media screen and (max-width: 900px) {
+  .profile {
+    margin: 0 30px;
+  }
+}
 @media screen and (max-width: 700px) {
   .profile {
     flex-direction: column;

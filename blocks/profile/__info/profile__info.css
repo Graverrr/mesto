@@ -1,7 +1,6 @@
 .profile__info {
   display: grid;
   flex-direction: column;
-  justify-content: center;
 }
 
 @media screen and (max-width: 700px) {

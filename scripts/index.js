@@ -58,39 +58,44 @@ function createCard (item) {
 function deleteCard(evt){
   evt.target.closest('.card').remove();
 }
+
 function renderCards(initialCards) {
   const card = initialCards.map(createCard);
   cardList.append(...card);
 }
+
 renderCards(initialCards);
+
 function toggleLikeStatus (evt) {  
   evt.target.classList.toggle('card__btn-like_active');
 }
+
 function addNewCard(evt) {
   evt.preventDefault();
-  const nameInput = evt.currentTarget.querySelector ('.popup__info_type_name').value; 
-  const linkInput = evt.currentTarget.querySelector ('.popup__info_type_link').value;
-  const newInitialCards = createCard ({name: nameInput,link: linkInput});
+  const nameInput = evt.currentTarget.querySelector('.popup__info_type_name').value; 
+  const linkInput = evt.currentTarget.querySelector('.popup__info_type_link').value;
+  const newInitialCards = createCard({name: nameInput,link: linkInput});
   cardList.prepend(newInitialCards);
   evt.target.reset();
   togglePopup(popupCards);
 }
 
-
-
 function togglePopup(popup) {
   popup.classList.toggle('popup_opened');
 }
+
 function togglePopupEdit() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
   togglePopup(popupEdit)
 }
+
 function togglePopupCards() {
   togglePopup(popupCards);
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
 }
+
 function formSubmitHandler(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
@@ -108,8 +113,7 @@ popupCards.addEventListener('submit',addNewCard);
 function openPopupImage(evt) {
   const link = evt.target.currentSrc;
   const title = evt.currentTarget.nextElementSibling.innerText;
-  fullSizeImage.src = link; 
-  
+  fullSizeImage.src = link;
   popupImageTitle.innerText = title;
   togglePopup(popupImage);  
 }

@@ -14,6 +14,7 @@
   background-image: url(../../../images/add-button.svg);
   background-repeat: no-repeat;
   background-position: center;
+  align-self: flex-start;
 }
 
 .profile__btn-add:hover {

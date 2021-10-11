@@ -7,8 +7,8 @@ const popupOpenBtn = document.querySelector('.profile__btn-edit');
 const fullSizeImage = document.querySelector('.popup__image');
 const popupImageTitle = document.querySelector('.popup__image-title');
 const popupCloseBtn = popup.querySelector('.popup__close_edit');
-const nameInput = popup.querySelector('.popup__info_type_name');
-const jobInput = popup.querySelector('.popup__info_type_job');
+const nameInput = popup.querySelector('.popup__input_type_name');
+const jobInput = popup.querySelector('.popup__input_type_job');
 const profileName = profile.querySelector('.profile__name');
 const profileJob = profile.querySelector('.profile__description');
 const cardTemplate = document.querySelector('.cards-template');
@@ -72,8 +72,8 @@ function toggleLikeStatus (evt) {
 
 function addNewCard(evt) {
   evt.preventDefault();
-  const nameInput = evt.currentTarget.querySelector('.popup__info_type_name').value; 
-  const linkInput = evt.currentTarget.querySelector('.popup__info_type_link').value;
+  const nameInput = evt.currentTarget.querySelector('.popup__input_type_name').value; 
+  const linkInput = evt.currentTarget.querySelector('.popup__input_type_link').value;
   const newInitialCards = createCard({name: nameInput,link: linkInput});
   cardList.prepend(newInitialCards);
   evt.target.reset();

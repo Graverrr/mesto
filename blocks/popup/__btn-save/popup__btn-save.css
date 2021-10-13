@@ -10,6 +10,7 @@
   font-size: 18px;
   line-height: 22px;
   cursor: pointer;
+  margin-top: 20px;
 }
 .popup__btn-save:hover{
   opacity: 50%;

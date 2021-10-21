@@ -1,25 +1,4 @@
-const profile = document.querySelector('.profile');
-const popupEdit = document.querySelector('.popup_type_edit');
-const popupCards = document.querySelector('.popup_type_create');
-const popupImage = document.querySelector('.popup_type_image');
-const popupOpenBtn = document.querySelector('.profile__btn-edit');
-const fullSizeImage = document.querySelector('.popup__image');
-const popupImageTitle = document.querySelector('.popup__image-title');
-const popupCloseBtn = document.querySelector('.popup__close_edit');
-const nameInput = document.querySelector('.popup__input_type_name');
-const jobInput = document.querySelector('.popup__input_type_job');
-const profileName = profile.querySelector('.profile__name');
-const profileJob = profile.querySelector('.profile__description');
-const cardTemplate = document.querySelector('.cards-template');
-const cardList = document.querySelector('.cards__list');
-const cardsForm = document.querySelector('.cards__form');
-const cardsImage = document.querySelector('.cards__image');
-const popupAddCardBtn = document.querySelector('.profile__btn-add');
-const popupCloseCardBtn = document.querySelector('.popup__close_cards');
-const popupImageCloseBtn = document.querySelector('.popup__close_image');
-const submitButton = popupCards.querySelector('.popup__btn-save');
-const placeInput = popupCards.querySelector('.popup__input_type_place'); 
-const linkInput = popupCards.querySelector('.popup__input_type_link');
+import {Card} from "./Card.js";
 const initialCards = [
   {
     name: 'Архыз',
@@ -45,47 +24,50 @@ const initialCards = [
     name: 'Байкал',
     link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
   }
-]; 
+];
+const profile = document.querySelector('.profile');
+const popupEdit = document.querySelector('.popup_type_edit');
+const popupCards = document.querySelector('.popup_type_create');
+const popupImage = document.querySelector('.popup_type_image');
+const popupOpenBtn = document.querySelector('.profile__btn-edit');
+const fullSizeImage = document.querySelector('.popup__image');
+const popupImageTitle = document.querySelector('.popup__image-title');
+const popupCloseBtn = document.querySelector('.popup__close_edit');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_job');
+const profileName = profile.querySelector('.profile__name');
+const profileJob = profile.querySelector('.profile__description');
+const cardTemplate = document.querySelector('.cards-template');
+const cardList = document.querySelector('.cards__list');
+const cardsForm = document.querySelector('.cards__form');
+const cardsImage = document.querySelector('.cards__image');
+const popupAddCardBtn = document.querySelector('.profile__btn-add');
+const popupCloseCardBtn = document.querySelector('.popup__close_cards');
+const popupImageCloseBtn = document.querySelector('.popup__close_image');
+const submitButton = popupCards.querySelector('.popup__btn-save');
+const placeInput = popupCards.querySelector('.popup__input_type_place'); 
+const linkInput = popupCards.querySelector('.popup__input_type_link');
+
+initialCards.forEach((item) => {
+  const card = new Card(item.name, item.link);
+  const cardElement = card.generateCard();
+  document.querySelector('.cards__list').append(cardElement);
+})
 
 function createCard (item) {
-  const card = cardTemplate.content.cloneNode(true);
-  const cardName = item.name;
-  card.querySelector('.card__title').textContent = cardName;
-  card.querySelector('.card__image').src = item.link;
-  card.querySelector('.card__image').alt = cardName;
+
   card.querySelector('.card__btn-delete').addEventListener('click', deleteCard);
   card.querySelector('.card__btn-like').addEventListener('click', toggleLikeStatus);
   card.querySelector('.card__image').addEventListener('click', () => openFullscreenPopup(item.link, cardName));
-  const openFullscreenPopup = (link, name) => { 
-    popupImageTitle.textContent = name; 
-    fullSizeImage.alt = name; 
+  const openFullscreenPopup = (link, name) => {
+    popupImageTitle.textContent = name;
+    fullSizeImage.alt = name;
     fullSizeImage.src =  link;
-    openPopup(popupImage); 
-  } 
-  
+    openPopup(popupImage);
+  }
+
   return card;
 }
-
-const disabledSubmitButton = () => {
-  submitButton.setAttribute('disabled', true);
-  submitButton.classList.add('popup__btn-save_invalid');
-}
-
-function deleteCard(evt){
-  evt.target.closest('.card').remove();
-}
-
-function renderCards(initialCards) {
-  const card = initialCards.map(createCard);
-  cardList.append(...card);
-}
-
-renderCards(initialCards);
-
-function toggleLikeStatus (evt) {  
-  evt.target.classList.toggle('card__btn-like_active');
-}
-
 function addNewCard(evt) {
   const place = placeInput.value;
   const link = linkInput.value;
@@ -95,6 +77,22 @@ function addNewCard(evt) {
   evt.target.reset();
   closePopup(popupCards);
 }
+const disabledSubmitButton = () => {
+  submitButton.setAttribute('disabled', true);
+  submitButton.classList.add('popup__btn-save_invalid');
+}
+
+function deleteCard(evt){
+  evt.target.closest('.card').remove();
+}
+
+
+
+
+function toggleLikeStatus (evt) {  
+  evt.target.classList.toggle('card__btn-like_active');
+}
+
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened')
@@ -150,5 +148,4 @@ popupCloseBtn.addEventListener('click', () => closePopup(popupEdit));
 popupAddCardBtn.addEventListener('click', openPopupCards);
 popupCloseCardBtn.addEventListener('click', ()=> closePopup(popupCards));
 popupEdit.addEventListener('submit', handleSubmitForm);
-popupCards.addEventListener('submit',addNewCard);
 popupImageCloseBtn.addEventListener('click', closePopupImage);

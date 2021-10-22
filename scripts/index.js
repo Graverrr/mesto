@@ -1,30 +1,6 @@
-import {Card} from "./Card.js";
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
+import Card from "./Card.js";
+
+const card = new Card(name, link)
 const profile = document.querySelector('.profile');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupCards = document.querySelector('.popup_type_create');
@@ -48,32 +24,13 @@ const submitButton = popupCards.querySelector('.popup__btn-save');
 const placeInput = popupCards.querySelector('.popup__input_type_place'); 
 const linkInput = popupCards.querySelector('.popup__input_type_link');
 
-initialCards.forEach((item) => {
-  const card = new Card(item.name, item.link);
-  const cardElement = card.generateCard();
-  document.querySelector('.cards__list').append(cardElement);
-})
 
-function createCard (item) {
 
-  card.querySelector('.card__btn-delete').addEventListener('click', deleteCard);
-  card.querySelector('.card__btn-like').addEventListener('click', toggleLikeStatus);
-  card.querySelector('.card__image').addEventListener('click', () => openFullscreenPopup(item.link, cardName));
-  const openFullscreenPopup = (link, name) => {
-    popupImageTitle.textContent = name;
-    fullSizeImage.alt = name;
-    fullSizeImage.src =  link;
-    openPopup(popupImage);
-  }
-
-  return card;
-}
 function addNewCard(evt) {
+  evt.preventDefault();
   const place = placeInput.value;
   const link = linkInput.value;
-  evt.preventDefault();
-  const newInitialCards = createCard({name: place,link: link});
-  cardList.prepend(newInitialCards);
+  cardList.prepend(card(place, link));
   evt.target.reset();
   closePopup(popupCards);
 }

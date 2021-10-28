@@ -4,7 +4,9 @@ import {FormValidator} from "./FormValidator.js";
 
 const profile = document.querySelector('.profile');
 const popupEdit = document.querySelector('.popup_type_edit');
+const popupEditForm = document.querySelector('.popup__container_type_create');
 const popupCards = document.querySelector('.popup_type_create');
+const createCardForm = document.querySelector('.popup__container_type_create');
 const popupImage = document.querySelector('.popup_type_image');
 const popupOpenBtn = document.querySelector('.profile__btn-edit');
 const fullSizeImage = document.querySelector('.popup__image');
@@ -38,8 +40,11 @@ initialCards.forEach((item) => {
   document.querySelector('.cards__list').append(cardElement);
 })
 
-const newImgForm = new FormValidator(popupCards, validationConfig);
-newImgForm.enableValidation();
+const newCardForm = new FormValidator(createCardForm, validationConfig);
+newCardForm.enableValidation();
+
+const newEditForm = new FormValidator(popupEditForm, validationConfig);
+newEditForm.enableValidation();
 
 function addNewCard(evt) {
   evt.preventDefault();
@@ -50,14 +55,7 @@ function addNewCard(evt) {
   evt.target.reset();
   closePopup(popupCards);
 }
-const disabledSubmitButton = () => {
-  submitButton.setAttribute('disabled', 'disabled');
-  submitButton.classList.add('popup__btn-save_invalid');
-}
 
-function deleteCard(evt){
-  evt.target.closest('.card').remove();
-}
 
 
 
@@ -96,11 +94,11 @@ const pressEsc = (evt) => {
 function openPopupEdit() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileJob.textContent;
-  openPopup(popupEdit)
+  openPopup(popupEdit);
+  newEditForm.resetValidation();
 }
 
 function openPopupCards() {
-  disabledSubmitButton();
   openPopup(popupCards);
 }
 

@@ -1,6 +1,7 @@
-import Card from "./Card.js";
+import {initialCards} from "./initialCards.js";
+import {Card} from "./Card.js";
+import {FormValidator} from "./FormValidator.js";
 
-const card = new Card(name, link)
 const profile = document.querySelector('.profile');
 const popupEdit = document.querySelector('.popup_type_edit');
 const popupCards = document.querySelector('.popup_type_create');
@@ -23,19 +24,34 @@ const popupImageCloseBtn = document.querySelector('.popup__close_image');
 const submitButton = popupCards.querySelector('.popup__btn-save');
 const placeInput = popupCards.querySelector('.popup__input_type_place'); 
 const linkInput = popupCards.querySelector('.popup__input_type_link');
+const validationConfig = {
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__btn-save',
+  inactiveButtonClass: 'popup__btn-save_invalid',
+  inputErrorClass: 'popup__input_state_invalid',
+};
 
+initialCards.forEach((item) => {
+  const card = new Card(item);
+  const cardElement = card.generateCard();
+  document.querySelector('.cards__list').append(cardElement);
+})
 
+const newImgForm = new FormValidator(popupCards, validationConfig);
+newImgForm.enableValidation();
 
 function addNewCard(evt) {
   evt.preventDefault();
   const place = placeInput.value;
   const link = linkInput.value;
-  cardList.prepend(card(place, link));
+  const card = new Card({name: place,link: link});
+  cardList.prepend(card.generateCard());
   evt.target.reset();
   closePopup(popupCards);
 }
 const disabledSubmitButton = () => {
-  submitButton.setAttribute('disabled', true);
+  submitButton.setAttribute('disabled', 'disabled');
   submitButton.classList.add('popup__btn-save_invalid');
 }
 

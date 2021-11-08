@@ -4,7 +4,7 @@ import {FormValidator} from "./FormValidator.js";
 
 const profile = document.querySelector('.profile');
 const popupEdit = document.querySelector('.popup_type_edit');
-const popupEditForm = document.querySelector('.popup__container_type_create');
+const popupEditForm = document.querySelector('.popup__container_type_edit');
 const popupCards = document.querySelector('.popup_type_create');
 const createCardForm = document.querySelector('.popup__container_type_create');
 const popupImage = document.querySelector('.popup_type_image');
@@ -46,14 +46,24 @@ newCardForm.enableValidation();
 const newEditForm = new FormValidator(popupEditForm, validationConfig);
 newEditForm.enableValidation();
 
+function createCard(data){
+  const card = new Card(data).generateCard();
+  return card
+}
+
 function addNewCard(evt) {
   evt.preventDefault();
-  const place = placeInput.value;
-  const link = linkInput.value;
-  const card = new Card({name: place,link: link});
-  cardList.prepend(card.generateCard());
-  evt.target.reset();
+  const newCard = createCard({
+    name: placeInput.value,
+    link: linkInput.value
+  })
+
+  cardList.prepend(newCard);
+  placeInput.value = '';
+  linkInput.value = '';
   closePopup(popupCards);
+
+  evt.target.reset();
 }
 
 
@@ -67,13 +77,13 @@ function toggleLikeStatus (evt) {
 
 const openPopup = (popup) => {
   popup.classList.add('popup_opened')
-  window.addEventListener('keydown', pressEsc)
+  document.addEventListener('keydown', pressEsc)
   popup.addEventListener('mousedown', clickOverlay)
 }
 
 const closePopup = (popup) => {
   popup.classList.remove('popup_opened')
-  window.removeEventListener('keydown', pressEsc)
+  document.removeEventListener('keydown', pressEsc)
   popup.addEventListener('mousedown', clickOverlay)
 }
 
@@ -119,4 +129,5 @@ popupCloseBtn.addEventListener('click', () => closePopup(popupEdit));
 popupAddCardBtn.addEventListener('click', openPopupCards);
 popupCloseCardBtn.addEventListener('click', ()=> closePopup(popupCards));
 popupEdit.addEventListener('submit', handleSubmitForm);
+createCardForm.addEventListener("submit", addNewCard);
 popupImageCloseBtn.addEventListener('click', closePopupImage);

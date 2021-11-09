@@ -26,14 +26,7 @@ class FormValidator {
     }
   };
 
-  resetValidation() {
-    this._toggleButtonState();
-    this._inputsList.forEach((inputElement) => {
 
-      const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
-      this._hideErrorMessage(inputElement, errorElement);
-    });
-  }
   _toggleButtonState =  (isActive) =>{
     if(isActive){
       this._submitButton.classList.remove(this._config.inactiveButtonClass);
@@ -59,6 +52,13 @@ class FormValidator {
       this._toggleButtonState(false);
     })
   };
+  resetValidation() {
+    this._toggleButtonState();
+    this._inputsList.forEach((inputElement) => {
+      const errorElement = this._formElement.querySelector(`#${inputElement.id}-error`);
+      this._hideErrorMessage(inputElement, errorElement);
+    });
+  }
 
   enableValidation = () => {
     this._setEventListeners();

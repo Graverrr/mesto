@@ -5,6 +5,9 @@
   line-height: 22px;
   grid-row: 2/3;
   max-width: 350px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 450px) {

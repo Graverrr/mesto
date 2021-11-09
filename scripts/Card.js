@@ -1,12 +1,17 @@
+import {openPopup} from "./index.js";
+const popupImage = document.querySelector('.popup_type_image');
+const fullSizeImage = document.querySelector('.popup__image');
+
 class Card {
-  constructor(data){
+  constructor(data, selector){
     this._name = data.name;
     this._link = data.link;
+    this._selector = selector;
   }
 
   _getTemplate() {
     const cardTemplate = document
-      .querySelector('.cards-template')
+      .querySelector(this._selector)
       .content
       .querySelector('.card')
       .cloneNode(true);
@@ -44,12 +49,10 @@ class Card {
   }
 
   _handleOpenPopup(){
-    const popupImage = document.querySelector('.popup_type_image');
-    popupImage.classList.add('popup_opened');
-    const popupImg = document.querySelector('.popup__image');
-    popupImg.src = this._link;
-    popupImg.alt = this._name;
-    document.querySelector('.popup__title').textContent = this._name;
+    openPopup(popupImage)
+    fullSizeImage.src = this._link;
+    fullSizeImage.alt = this._name;
+    document.querySelector('.popup__image-title').textContent = this._name;
     }
  }
 

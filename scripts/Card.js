@@ -49,10 +49,10 @@ class Card {
   }
 
   _handleOpenPopup(){
-    openPopup(popupImage)
     fullSizeImage.src = this._link;
     fullSizeImage.alt = this._name;
     document.querySelector('.popup__image-title').textContent = this._name;
+    openPopup(popupImage)
     }
  }
 

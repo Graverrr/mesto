@@ -49,7 +49,7 @@ function createCard(data){
 }
 
 initialCards.forEach((item) => {
-  const card = new createCard(item);
+  const card =  createCard(item);
   document.querySelector('.cards__list').append(card);
 })
 

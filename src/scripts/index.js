@@ -1,9 +1,9 @@
-import Card from './components/Card.js';
-import FormValidator from './components/FormValidator.js';
-import PopupWithImage from './components/PopupWithImage.js';
-import PopupWithForm from './components/PopupWithForm.js';
-import UserInfo from './components/UserInfo.js';
-import Section from './components/Section.js';
+import {Card} from './components/Card.js';
+import {FormValidator} from './components/FormValidator.js';
+import {PopupWithImage} from './components/PopupWithImage.js';
+import {PopupWithForm} from './components/PopupWithForm.js';
+import {UserInfo} from './components/UserInfo.js';
+import {Section} from './components/Section.js';
 import {
   initialCards,
   cardsList,
@@ -11,8 +11,10 @@ import {
   jobInput,
   popupOpenBtn,
   popupAddCardBtn,
+  popupEdit,
   popupEditForm,
   createCardForm,
+  popupCards,
   validationConfig,
   profileName,
   profileJob,
@@ -20,84 +22,73 @@ import {
 } from './utils/constants.js';
 import '../pages/index.css'
 
-const newCardForm = new FormValidator(createCardForm, validationConfig);
-const newEditForm = new FormValidator(popupEditForm, validationConfig);
-const popupWithImage = new PopupWithImage(popupImage);
-const userInfo = new UserInfo({profileName, profileJob});
-const enableValidation = () =>{
-  newEditForm.enableValidation();
-  newCardForm.enableValidation();
+const userInfo = new UserInfo({name: profileName, job: profileJob});
+const editFormValidation = new FormValidator(validationConfig, popupEditForm);
+const cardFormValidation = new FormValidator(validationConfig, createCardForm);
+const popupImg = new PopupWithImage(popupImage);
+popupImg.setEventListeners();
+cardFormValidation.enableValidation();
+editFormValidation.enableValidation();
+const createCard = (item) => {
+  const card = new Card({
+    data: item,
+    handleCardClick: () => {
+      popupImg.open({data: item});
+    }
+  }, 
+    '.cards-template'
+  );
+  const cardElement = card.generateCard();
+  return cardElement;
 }
-
-enableValidation();
-
-
-
-const handleCardClick = (link, name) => {
-  popupWithImage.open(link, name);
-};
 
 const cardList = new Section({
-  data: initialCards,
-  renderer: (cardItem) => {
-    сreateCard(cardItem);
-  },
-},
-cardsList
-);
+  items: initialCards, 
+  renderer: (item) => { 
+    const element = createCard(item); 
+    cardList.addItem(element); 
+    } 
+  }, 
+  cardsList 
+); 
 
-cardList.renderItems();
+cardList.renderItems(); 
 
-function сreateCard(cardItem) {
-  const card = new Card(cardItem, '.cards-template', handleCardClick);
-  cardList.addItem(card.generateCard())
+const newProfileForm = new PopupWithForm({
+  popup: popupEdit,
+  handleFormSubmit: (data) => {
+  handleProfileSubmit(data);
+  }
+});
+newProfileForm.setEventListeners();
+
+const newCardForm = new PopupWithForm({
+  popup: popupCards,
+  handleFormSubmit: (item) => {
+    const newCard = createCard(item);
+    cardList.addItem(newCard);
+    newCardForm.close();
+  }
+});
+newCardForm.setEventListeners();
+
+const openPopupForm = () => {
+  cardFormValidation.resetValidation()
+  newCardForm.open();
 }
 
-const openProfile = () => {
-  const currentInfo = userInfo.getUserInfo();
-  // nameInput.value = currentInfo.userName
-  // jobInput.value = currentInfo.userJob
-  popupEditForm.open()
+const openPopupProfile = () => {
+  const currentUserInfo = userInfo.getUserInfo();
+  nameInput.value = currentUserInfo.userName;
+  jobInput.value = currentUserInfo.userJob;
+  editFormValidation.resetValidation()
+  newProfileForm.open();
 }
 
+const handleProfileSubmit = (data) => {
+  userInfo.setUserInfo(data['name'], data['job']);
+  newProfileForm.close();
+} 
 
-popupWithImage.setEventListeners();
-
-
-// const handleProfileSubmit = (data) => {
-
-//   userInfo.setUserInfo(data['name'], data['job']);
-//   popupEditForm.close();
-// } 
-
-// const editProfileForm = new PopupWithForm({
-//   popup: popupEditForm,
-//   handleFormSubmit: (data) => {
-//     handleProfileSubmit(data);
-//   }
-// });
-
-// editProfileForm.setEventListeners();
-
-// const addCardForm = new PopupWithForm(createCardForm, cardFormSubmit);
-
-// function cardFormSubmit(data){
-//   сreateCard(data);
-//   createCardForm.close()
-//   newCardForm.resetValidation();
-// }
-
-// addCardForm.setEventListeners()
-
-// const openCardForm = () => {
-//   editProfileForm.open();
-// }
-// const openProfileForm = () => {
-//   const currentUserInfo = userInfo.getUserInfo();
-//   nameInput.value = currentUserInfo.name;
-//   jobInput.value = currentUserInfo.job;
-//   editProfileForm.open();
-// }
-
-popupOpenBtn.addEventListener('click', openProfile);
-// popupAddCardBtn.addEventListener('click', openCardForm);
+popupOpenBtn.addEventListener('click', openPopupProfile);
+popupAddCardBtn.addEventListener('click', openPopupForm);

@@ -1,5 +1,5 @@
-export default class FormValidator {
-  constructor (formElement, config) {
+class FormValidator {
+  constructor (config, formElement) {
     this._formElement = formElement;
     this._config = config;
     this._submitButton = formElement.querySelector(this._config.submitButtonSelector);
@@ -27,8 +27,9 @@ export default class FormValidator {
   };
 
 
-  _toggleButtonState =  (isActive) =>{
-    if(isActive){
+  _toggleButtonState =  () =>{
+    const isFormValid = this._formElement.checkValidity();
+    if(isFormValid){
       this._submitButton.classList.remove(this._config.inactiveButtonClass);
       this._submitButton.disabled = false;
     } else {
@@ -66,3 +67,5 @@ export default class FormValidator {
   }
 
 }
+
+export {FormValidator}

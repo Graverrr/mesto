@@ -11,5 +11,5 @@
   font-family: "Inter", Arial, Helvetica, sans-serif;
   visibility: hidden;
   opacity: 0;
-  transition: opacity .40s linear, visibility .40s;
+  transition: opacity 0.4s linear, visibility 0.4s;
 }

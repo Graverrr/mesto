@@ -15,25 +15,29 @@ export default class Card {
       
     return cardTemplate;
   }
+
   generateCard() {
     this._element = this._getTemplate();
-    this._cardImage = this._element.querySelector('.card__image')
-    this._cardImage.src = this._link;
-    this._cardImage = this._name;
-    this._element.querySelector('.card__title').textContent = this._name;
+    this._elementImage = this._element.querySelector('.card__image');
+    this._elementTitle = this._element.querySelector('.card__title').textContent = this._name;
+    this._elementLikeButton = this._element.querySelector('card__btn-like');
+    this._elementDelButton = this._element.querySelector('card__btn-delete');
+    this._imgPreview = this._element.querySelector('popup__image');
+    this._elementImage.src = this._link;
+    this._elementImage = this._name;
     this._setEventListeners()
     return this._element;
   }
 
   _setEventListeners() {
-    this._element.querySelector('.card__btn-like').addEventListener('click', () => {
-      this._toggleLikeStatus();
-    });
-    this._element.querySelector('.card__btn-delete').addEventListener('click', () => {
-      this._deleteCard();
-    });
-    // this._cardImage.addEventListener('click', () => {
-    //   this._handleCardClick({link: this._link , name: this._name});
+    // this._elementLikeButton.addEventListener('click', () => {
+    //   this._toggleLikeStatus();
+    // });
+    // this._elementDelButton.addEventListener('click', () => {
+    //   this._deleteCard();
+    // });
+    // this._elementImage.addEventListener('click', () => {
+    //   this._handleCardClick(this._link, this._name);
     // });
   }
 
@@ -42,8 +46,8 @@ export default class Card {
   }
 
   _toggleLikeStatus() {
-    const like = this._element.querySelector('.card__btn-like');
-    like.classList.toggle('card__btn-like_active')
+    
+    this._elementLikeButton.classList.toggle('card__btn-like_active')
   }
  }
 

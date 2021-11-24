@@ -4,20 +4,16 @@ class UserInfo  {
     this._job = job;
   }
 
-  setUserInfo({name, job}){
-    this._name = name;
-    this._description = job;
+  setUserInfo(userName, userJob ) {
+    this._name.textContent = userName;
+    this._job.textContent = userJob;
   }
+
   getUserInfo(){
     const data = {};
     data.userName = this._name.textContent;
     data.userJob = this._job.textContent;
     return data;
-  }
-
-  updateUserInfo(){
-    this._name.textContent = userName;
-    this._job.textContent = userJob;
   }
 }
 

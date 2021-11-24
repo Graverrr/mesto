@@ -1,9 +1,9 @@
-import {Card} from './components/Card.js';
-import {FormValidator} from './components/FormValidator.js';
-import {PopupWithImage} from './components/PopupWithImage.js';
-import {PopupWithForm} from './components/PopupWithForm.js';
-import {UserInfo} from './components/UserInfo.js';
-import {Section} from './components/Section.js';
+import {Card} from '../scripts/components/Card.js';
+import {FormValidator} from '../scripts/components/FormValidator.js';
+import {PopupWithImage} from '../scripts/components/PopupWithImage.js';
+import {PopupWithForm} from '../scripts/components/PopupWithForm.js';
+import {UserInfo} from '../scripts/components/UserInfo.js';
+import {Section} from '../scripts/components/Section.js';
 import {
   initialCards,
   cardsList,
@@ -19,7 +19,7 @@ import {
   profileName,
   profileJob,
   popupImage
-} from './utils/constants.js';
+} from '../scripts/utils/constants.js';
 import '../pages/index.css'
 
 const userInfo = new UserInfo({name: profileName, job: profileJob});

@@ -12,10 +12,13 @@
   </header>
   <main class="content">
     <section class="profile">
-      <img src="bbe7c5b6093ec0273de1.jpg" class="profile__avatar" alt="Жак-ив Кусто">
+      <div class="profile__edit"> 
+        <button class="profile__avatar-btn"></button>
+        <img src="#" class="profile__avatar" alt="Жак-ив Кусто">
+      </div>
       <div class="profile__info">
-        <h1 class="profile__name">Жак-ив Кусто</h1>
-        <p class="profile__description">Иследователь океана</p>
+        <h1 class="profile__name"></h1>
+        <p class="profile__description"></p>
         <button class="profile__btn-edit" aria-label="кнопка измнения" type="button"></button>
       </div>
       <button class="profile__btn-add" type="button"></button>
@@ -36,7 +39,7 @@
       <input class="popup__input popup__input_type_name" name="name" required id="name" type="text" minlength="2"
              maxlength="40" autocomplete="off">
       <span class="popup__input-error" id="name-error"></span>
-      <input class="popup__input popup__input_type_job" name="job" required id="job" type="text" minlength="2"
+      <input class="popup__input popup__input_type_job" name="about" required id="job" type="text" minlength="2"
              maxlength="200" autocomplete="off">
       <span class="popup__input-error" id="job-error"></span>
       <button class="popup__btn-save" type="submit">Сохранить</button>
@@ -65,13 +68,36 @@
     <button class="popup__close popup__close_image" type="button"></button>
   </div>
 </div>
+<div class="popup popup_type_edit_avatar">
+  <form name="editAvatar-form" class="popup__form popup__container popup__container_type_edit_avatar" novalidate>
+    <button class="popup__close popup__close_avatar" type="button"></button>
+    <div class="popup__content">
+      <h2 class="popup__title">Обновить аватар</h2>
+      <input placeholder="ссылка" id="urlavatar" type="url" required autocomplete="off" class="popup__input popup__input_type_link" name="link">
+      <span class="popup__input-error" id="urlavatar-error"></span>
+      <button class="popup__btn-save" type="submit">Сохранить</button>
+    </div>
+  </form>
+</div>
+<div class="popup popup_type_delete">
+    <form name="delete-form" class="popup__form popup__container popup__container_type_delete" novalidate>
+      <button class="popup__close popup__close_delete" type="button"></button>
+      <div class="popup__content">
+        <h2 class="popup__title">Вы уверены?</h2>
+        <button class="popup__btn-save" type="submit">Да</button>
+      </div>
+    </form>
+</div>
 <template class="cards-template">
   <li class="card">
     <button class="card__btn-delete"></button>
     <img class="card__image">
     <div class="card__info">
       <h2 class="card__title">Карачаево-черкесия</h2>
-      <button class="card__btn-like" type="button"></button>
+      <div class="likes">
+        <button class="card__btn-like" type="button"></button>
+        <h3 class="card__like-count"></h3>
+      </div>
     </div>
   </li>
 </template>

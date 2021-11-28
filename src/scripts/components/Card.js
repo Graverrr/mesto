@@ -58,6 +58,14 @@ class Card {
     });
   }  
 
+  isLoading(isLoading) {
+    if(isLoading) {
+        this._submitButton.textContent = 'Сохранение...';
+    } else {
+        this._submitButton.textContent = this._submitButton.textContent.slice(0, -3);
+    }
+  }
+
   _likeButtonToggle() {
     this._likeButton.classList.toggle('card__btn-like_active');
   }

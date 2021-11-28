@@ -4,14 +4,14 @@
 // формы
 export const popupEditForm = document.querySelector('.popup__container_type_edit');
 export const createCardForm = document.querySelector('.popup__container_type_create');
-export const editAvatarForm = document.querySelector('.popup__container_type_edit_avatar')
+export const editAvatarForm = document.querySelector('.popup__container_type_avatar')
 export const cardsForm = document.querySelector('.cards__form');
 export const cardDeleteForm = document.querySelector('.popup__container_type_delete')
 // попапы
 export const popupImage = document.querySelector('.popup_type_image');
 export const popupEdit = document.querySelector('.popup_type_edit');
 export const popupCards = document.querySelector('.popup_type_create');
-export const popupAvatar = document.querySelector('.popup_type_edit_avatar');
+export const popupAvatar = document.querySelector('.popup_type_avatar');
 export const popupCardDelete = document.querySelector('.popup_type_delete');
 //инпуты
 

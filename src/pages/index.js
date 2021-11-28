@@ -82,13 +82,16 @@ const createCard = (data) => {
     handleCardDelete: (card) =>{
       popupDelete.open();
       popupDelete.setActionSubmit(()=>{
-        
+        popupDelete.isLoading(true)
         api.deleteCard(card.id)
           .then(()=>{
             popupDelete.close();
             card.deleteCard()
           })
           .catch(err => console.log(err))
+          .finally(() => {
+            popupDelete.isLoading(false);
+          })
       })
     }}
   , 
@@ -142,15 +145,18 @@ newCardForm.setEventListeners();
 const newAvatarForm = new PopupWithForm({
   popup: popupAvatar,
   handleFormSubmit: (data) => {
-    // editAvatarForm.loading(true);
     api.editUserAvatar(data)
       .then((data) => {
         console.log(data)
         userInfo.setAvatar(data);
+        newAvatarForm.isLoading(true);
         newAvatarForm.close();
       })
       .catch((err) => {
         console.log(err);
+      })
+      .finally(() => {
+        newAvatarForm.isLoading(false);
       })
   }
 });

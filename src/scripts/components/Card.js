@@ -5,11 +5,9 @@ class Card {
     this._name = data.name;
     this._link = data.link;
     this._likes = data.likes;
-    
     this._evt = data.evt;
     this.id = data._id;
     this._userId = data.owner._id;
-    this._myId = data.currentUser;
     this._handleCardDelete = handleCardDelete;
     this._currentUserId = data.currentUserId;
     this._cardSelector = cardSelector;
@@ -35,7 +33,7 @@ class Card {
     this._likeCount.textContent = this._likes.length
     this._cardDeleteBtn = this._element.querySelector('.card__btn-delete')
 
-    if(this._myId === this._userId) {
+    if(this._currentUserId === this._userId) {
       this._cardDeleteBtn.classList.add('card_btn-delete_visible');
     } else {
       this._cardDeleteBtn.classList.remove('card_btn-delete_visible');
@@ -70,9 +68,9 @@ class Card {
     this._likeButton.classList.toggle('card__btn-like_active');
   }
 
-  _deleteCard() {
+  deleteCard() {
     this._element.remove();
-    this._element.innerHTML = null; 
+    this._element.innerHTML = ""; 
   }
 
   isLiked(){

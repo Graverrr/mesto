@@ -61,7 +61,7 @@ export class Api {
         avatar: data.link
       })
     })
-      .then(this._checkResponse);
+      .then(onResponse);
   }
 
   setCardLike(cardId){

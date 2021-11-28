@@ -4,10 +4,19 @@ export class PopupWithSubmit extends Popup {
 
   constructor(popup) {
     super(popup);
-    this._form = document.querySelector('.popup__container_type_delete')
+    this._form = document.querySelector('.popup__container_type_delete');
+    this._submitButton = this._popup.querySelector('.popup__btn-save')
   }
   setActionSubmit(action){
     this.handleSubmit = action;
+  }
+
+  isLoading(isLoading) {
+    if(isLoading) {
+        this._submitButton.textContent = 'Сохранение...';
+    } else {
+        this._submitButton.textContent = this._submitButton.textContent.slice(0, -3);
+    }
   }
 
   setEventListeners() {

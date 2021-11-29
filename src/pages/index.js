@@ -38,13 +38,6 @@ const api = new Api({
   }
 });
 
-api.getCards()
-  .then(data => console.log(data))
-  .catch(err => console.log(err));
-
-api.getUserInfo()
-  .then(userData => console.log(userData))
-  .catch(err => console.log(err))  
 
 Promise.all([api.getCards(), api.getUserInfo()])
   .then(([dataCards, dataUser]) => {
@@ -52,6 +45,9 @@ Promise.all([api.getCards(), api.getUserInfo()])
     userInfo.setUserInfo(dataUser);
     userInfo.setAvatar(dataUser);
     cardList.renderItems(dataCards);
+  })
+  .catch((err) => {
+    console.log(err);
   })
 
 const userInfo = new UserInfo({name: profileName, about: profileJob, avatar: profileAvatar});
@@ -145,11 +141,11 @@ newCardForm.setEventListeners();
 const newAvatarForm = new PopupWithForm({
   popup: popupAvatar,
   handleFormSubmit: (data) => {
+    newAvatarForm.isLoading(true);
     api.editUserAvatar(data)
       .then((data) => {
         console.log(data)
         userInfo.setAvatar(data);
-        newAvatarForm.isLoading(true);
         newAvatarForm.close();
       })
       .catch((err) => {

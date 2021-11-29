@@ -1,9 +1,4 @@
-function onResponse(res){
-  if (res.ok) {
-    return res.json();
-  }
-  return Promise.reject(`Ошибка: ${res.status}`);
-};
+
 
 
 export class Api {
@@ -12,11 +7,18 @@ export class Api {
     this._headers = headers;
   };
 
+
+  _checkResponse(res){
+    if (res.ok) {
+      return res.json();
+    }
+    return Promise.reject(`Ошибка: ${res.status}`);
+  };
   getCards(){
     return fetch(`${this._url}/cards`, {
       headers: this._headers
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   };
 
   addCard(data){
@@ -25,7 +27,7 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify(data)
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   }
 
   deleteCard(cardId){
@@ -33,14 +35,14 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   }
 
   getUserInfo(){
     return fetch(`${this._url}/users/me`, {
       headers: this._headers
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   }
 
   editUserInfo(data){
@@ -49,7 +51,7 @@ export class Api {
       headers: this._headers,
       body: JSON.stringify(data)
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   
   }
 
@@ -61,7 +63,7 @@ export class Api {
         avatar: data.link
       })
     })
-      .then(onResponse);
+    .then(this._checkResponse)
   }
 
   setCardLike(cardId){
@@ -69,7 +71,7 @@ export class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   }
 
   removeCardLike(cardId){
@@ -77,7 +79,7 @@ export class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then(onResponse)
+    .then(this._checkResponse)
   }
 
 

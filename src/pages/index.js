@@ -71,9 +71,15 @@ const createCard = (data) => {
       if(card.isLiked()){
         api.removeCardLike(card.id)
           .then(dataCard => card.setLikes(dataCard.likes))
+          .catch((err) => {
+            console.log(err);
+          })
       }
       api.setCardLike(card.id)
           .then(dataCard => card.setLikes(dataCard.likes))
+          .catch((err) => {
+            console.log(err);
+          })
     },
     handleCardDelete: (card) =>{
       popupDelete.open();
